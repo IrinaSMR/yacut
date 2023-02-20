@@ -21,9 +21,7 @@
 
 ```
 git clone https://github.com/IrinaSMR/yacut.git
-```
 
-```
 cd yacut
 ```
 
