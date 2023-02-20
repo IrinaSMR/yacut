@@ -58,7 +58,7 @@ flask shell
 from yacut import db; db.create_all(); exit()
 ```
 
-Выполнить запус сервиса:
+Выполнить запуск сервиса:
 
 ```
 flask run
