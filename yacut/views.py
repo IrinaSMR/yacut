@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template, abort
+from flask import flash, redirect, render_template
 
 from . import app
 from .forms import URL_mapForm, ORIGINAL_LINK_LABEL
