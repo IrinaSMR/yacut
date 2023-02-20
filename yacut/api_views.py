@@ -1,3 +1,4 @@
+from http import HTTPStatus
 from flask import jsonify, request
 
 from . import app
@@ -16,8 +17,8 @@ ALREADY_EXISTS = 'Имя \"{custom_id}\" уже занято.'
 def get_url(short_id):
     url = URLMap.get(short=short_id)
     if url is None:
-        raise InvalidAPIUsage(NOT_FOUND_URL, 404)
-    return jsonify({'url': url.original}), 200
+        raise InvalidAPIUsage(NOT_FOUND_URL, HTTPStatus.NOT_FOUND)
+    return jsonify({'url': url.original}), HTTPStatus.OK
 
 
 @app.route('/api/id/', methods=['POST'])
@@ -47,4 +48,4 @@ def add_url():
         raise InvalidAPIUsage(ALREADY_EXISTS.format(custom_id=custom_id))
     return jsonify(
         URLMap.add(original=url, short=custom_id).to_dict_for_api()
-    ), 201
+    ), HTTPStatus.CREATED

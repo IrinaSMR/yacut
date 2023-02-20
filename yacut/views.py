@@ -10,10 +10,8 @@ FORM_ERROR = f'"{ORIGINAL_LINK_LABEL}" является обязательным
 
 @app.route('/<string:id>')
 def get_original_url(id):
-    url = URLMap.get(short=id)
-    if url is None:
-        abort(404)
-    return redirect(url.original)
+    return redirect(
+        URLMap.query.filter_by(short=id).first_or_404().original)
 
 
 @app.route('/', methods=['GET', 'POST'])
